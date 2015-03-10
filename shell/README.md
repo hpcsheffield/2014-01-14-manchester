@@ -2,53 +2,53 @@
 
 **Material by Milad Fatenejad, Sasha Wood, Radhika Khetani and Karin Lagesen**
 
-*Modified by Shoaib Sufi*
+*Modified by Shoaib Sufi for Manchester, 2014 and by Seb James for Sheffield 2015*
 
-# What is the shell and how do I access the shell?
+# This tutorial
 
-The *shell* is a program that presents a command line interface
-which allows you to control your computer using commands entered
-with a keyboard instead of controlling graphical user interfaces
-(GUIs) with a mouse/keyboard combination.
+This is a tutorial to introduce you to the *shell* and how it might be useful for your research.
 
-Use a browser to open the tutorial on github, located at:
-    https://github.com/apawlik/2014-01-14-manchester
+You can use a browser to open this tutorial on github:
+    https://github.com/sebjameswml/2014-01-14-manchester/tree/master/shell
 
-Click on the directory named `shell`.
+# What is a shell?
 
-A *terminal* is a program you run that gives you access to the
-shell. There are many different terminal programs that vary across
-operating systems.
-	 
-To open a terminal (on Linux), just single click on the "Terminal" icon on the
-Desktop. If you don't know how to start the terminal program on your platform please ask for help.
+A *shell* is a program which reads a command that you typed; decides
+what to do with it; does it; then prints out any text that was
+generated.
+
+It's a middleman between you and the core (or *kernel*) of the computer.
+
+A *terminal* is a program that gives you access to the shell -
+think of the terminal as the window enclosing the shell, and the shell
+as that little prompt at the bottom:
+
+    `you@somecomputer:~$`
 
 # The Example: Manipulating Experimental Data Files
 
 We will spend most of our time learning about the basics of the shell
-by manipulating some experimental data from a hearing test. To get
-the data for this test, you will need internet access and an open terminal. 
-Just enter the command:
+by manipulating some experimental data from a hearing test. 
 
-    git clone https://github.com/apawlik/2014-01-14-manchester.git
+To get the data:
+
+    git clone https://github.com/sebjameswml/2014-01-14-manchester.git
 
 The git command will grab all of the data needed for this workshop from GitHub.
 
-Followed by:
+Now we'll *c*hange *d*irectory into the directory tree which git cloned for us:
 
     cd 2014-01-14-manchester
 
-# Let's get started
+# What the shell runs: built-ins and programs
 
-One very basic command is `echo`. This command just prints text to
-the terminal. Try the command:
+Usually, when you type a command at the shell, all you want the shell
+itself to do is to find, and execute another, standalone program.
 
-    echo Hello, World
+For example, `ls` is a standalone program which lists the contents of
+the current working directory:
 
-Then press enter. You should see the text "Hello, World" printed back
-to you. The echo command is useful for printing from a shell script,
-for displaying variables, and for generating known values to pass
-to other programs.
+    ls
 
 ## Moving around the file system
 
