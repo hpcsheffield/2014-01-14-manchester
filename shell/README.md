@@ -6,7 +6,8 @@
 
 # This tutorial
 
-This is a tutorial to introduce you to the *shell* and how it might be useful for your research.
+This is a tutorial to introduce you to the *shell* and how it might be
+useful for your research.
 
 You can use a browser to open this tutorial on github:
     https://github.com/sebjameswml/2014-01-14-manchester/tree/master/shell
@@ -28,6 +29,33 @@ as that little prompt at the bottom:
 (If you're geeky, you can change the content and colours in that
 prompt by modifying the PS1 environment variable).
 
+The shell we'll use is called *bash*, though there are many others,
+and you can even use some scripting programming languages as if they
+were shells.
+
+# What the shell does: It calls built-in commands and programs
+
+Usually, when you type a command at the shell, all you want the shell
+to do is to find, and execute a program.
+
+For example, `free` is a standalone program which gives you some
+information about the memory available on the computer:
+
+    free
+
+When you type this, the shell first checks if `free` is one of its own,
+special built-in keywords. It then looks in its list of "places where
+there might be programs" and runs the first one it finds. (That list
+is called the PATH; more on that later).
+
+You can see the free program that you just ran by listing it:
+
+    ls /usr/bin/free
+
+Some commands you'll use are *bash builtins*. A couple of examples are
+`alias` and `source`. When you type these, you activate code which is
+part of the shell itself.
+
 # The Example: Manipulating Experimental Data Files
 
 We will spend most of our time learning about the basics of the shell
@@ -43,26 +71,11 @@ Now we'll *c*hange *d*irectory into the directory tree which git cloned for us:
 
     cd 2014-01-14-manchester
 
-# What the shell runs: built-ins and programs
-
-Usually, when you type a command at the shell, all you want the shell
-to do is to find, and execute a program.
-
-For example, `ls` is a standalone program which lists the contents of
-the current working directory:
-
-    ls
-
-When you type this, the shell first checks if `ls` is one of its own,
-special built-in keywords. It then looks in its list of "places where
-there might be programs" and runs the first one it finds. (That list
-is called the PATH; more on that later).
-
-## Moving around the file system
+# Moving around the file system
 
 The filesystem is like a tree. On Unix systems, there's only one root
-of the tree (the ___ ends at the ground). Windows systems may have
-several roots (C:\ D:\ and so on). The bottom of the tree is called
+of the tree (the analogy ends at the ground). Windows systems may have
+several trees (C:\ D:\ and so on). The bottom of the tree is called
 the root and in Unix, it's represented by the symbol '/'
 
 Navigating the filesystem at the shell requires some typing, but there
@@ -78,14 +91,15 @@ files or directories.
 Whenever you start up a terminal, you will start in a special
 directory called the *home* directory. Every user has their own home
 directory where they have full access to do whatever they want. In
-this case, the `pwd` command tells us that the name of our home directory is.
-The last word in that listing should also be the name of your user. 
-You can also find out your user name by entering the command `whoami`. 
+this case, the `pwd` command tells us what the name of our home
+directory is.  The last word in that listing should also be the name
+of your user.  You can also find out your user name by entering the
+command `whoami`.
 
 You can always get to your home directory by typing `cd` (return). You
-can navigate to the last directory you were in with `
+can navigate to the last directory you were in with `cd -`.
 
-**File Types**
+# File Types
 
 When you enter the `ls` command, it lists the contents of the current
 directory. There are several items in your home directory.
@@ -112,18 +126,19 @@ The `rm` command can be used to remove files. If you enter `ls` again,
 you will see that `testfile` is gone.
 
 
-**Changing Directories**
+# Changing Directories
 
 Now, let's move to a different directory. The command `cd` (change
-directory) is used to move around. We used `cd` earlier to get us into the `2014-01-14-manchester` directory.
-Now let's move into the `shells`
-directory. Enter the following command:
+directory) is used to move around. We used `cd` earlier to get us into
+the `2014-01-14-manchester` directory.  Now let's move into the
+`shell` directory. Enter the following command:
 
     cd shell
 
-Now use the `ls` command to see what is inside this directory. 
-This directory contains all of the material for the shell part of this boot camp. Now
-move to the directory containing the data for the shell tutorial:
+Now use the `ls` command to see what is inside this directory.  This
+directory contains all of the material for the shell part of this boot
+camp. Now move to the directory containing the data for the shell
+tutorial:
 
     cd data
 
@@ -131,7 +146,7 @@ If you enter the `cd` command by itself, you will return to the home
 directory. Try this, and then navigate back to the `shell`
 directory.
 
-## Arguments
+# Arguments
 
 Most programs take additional arguments that control their exact
 behavior. For example, `-F` and `-l` are arguments to `ls`.  The `ls`
@@ -149,17 +164,19 @@ to exit.
 
 Note if you are using Git Bash on Windows this does not have man but
 people have hosted the man pages at various sites which is useful for
-people on any platform e.g www.kernel.org/doc/man-pages/online_pages.html or www.linuxmanpages.com
+people on any platform e.g
+www.kernel.org/doc/man-pages/online_pages.html or
+www.linuxmanpages.com
 
 Programs that are run from the shell can get extremely complicated. To
-see an example, open up the manual page for the `find` program,
-which we will use later this session. No one can possibly learn all of
-these arguments, of course. So you will probably find yourself
-referring back to the manual page frequently. Note: sometimes it can be
-pretty difficult to understand what it says in a man file. However, each time
-you read a man file you will understand more of it. 
+see an example, open up the manual page for the `find` program, which
+we will use later this session. No one can possibly learn all of these
+arguments, of course. So you will probably find yourself referring
+back to the manual page frequently. Note: sometimes it can be pretty
+difficult to understand what it says in a man file. However, each time
+you read a man file you will understand more of it.
 
-**Examining the contents of other directories**
+# Examining the contents of other directories
 
 By default, the `ls` commands lists the contents of the working
 directory (i.e. the directory you are in). However, you can also
@@ -182,22 +199,24 @@ similar way. Try entering:
 and you will jump directly to `shell` without having to go through
 the intermediate directory.
 
-## Full vs. Relative Paths
+# Absolute vs. Relative Paths
 
 The `cd` command takes an argument which is the directory
-name. Directories can be specified using either a *relative* path or a
-full *path*. The directories on the computer are arranged into a
-hierarchy. The full path tells you where a directory is in that
-hierarchy, all the way from the root and downwards.
+name. Directories can be specified using either a *relative path* or
+an *absolute path*. The directories on the computer are arranged into
+a hierarchy. The absolute path tells you where a directory is in that
+hierarchy, all the way from the root and up.
 
- Navigate to the home directory. Now, enter the `pwd`
-command and you should see the full name of your home directory. 
-This tells you that you are in a directory that is named the same as
-your user, which sits inside one or more other directories. The
-very top of the hierarchy is a directory called `/` which is usually
-referred to as the *root directory*.
+Navigate to the home directory. Now, enter the `pwd` command and you
+should see the full name of your home directory.  This tells you that
+you are in a directory that is named the same as your user, which sits
+inside one or more other directories. The very top of the hierarchy is
+a directory called `/` which is usually referred to as the *root
+directory*.
 
-First, figure out again what the full path to your home directory was. Now enter the following command (replace the stuff in <> with the results from `pwd`).
+First, figure out again what the absolute path to your home directory
+was. Now enter the following command (replace the stuff in <> with the
+results from `pwd`).
 
     cd <pwd-results>/2014-01-14-manchester/shell
 
@@ -207,32 +226,30 @@ earlier that the command
     cd 2014-01-14-manchester/shell
 
 had the same effect - it took us to the `shell` directory. But,
-instead of specifying the full path which started with a /, 
-we specified a *relative path*. In
-other words, we specified the path relative to our current
-directory. A full path always starts with a `/`. A relative path does
-not. You can usually use either a full path or a relative path
-depending on what is most convenient. If we are in the home directory,
-it is more convenient to just enter the relative path since it
-involves less typing.
+instead of specifying the absolute path which started with a /, we
+specified a *relative path*. In other words, we specified the path
+relative to our current directory. A absolute path always starts with
+a `/`. A relative path does not. You can usually use either an
+absolute path or a relative path depending on what is most
+convenient. If we are in the home directory, it is more convenient to
+just enter the relative path since it involves less typing.
 
 Now, list the contents of the `/bin` directory. Do you see anything
 familiar in there?
 
+# Saving time with shortcuts, wild cards, and tab completion
 
-## Saving time with shortcuts, wild cards, and tab completion
+## Shortcuts
 
-**Shortcuts**
-
-There are some shortcuts which you should know about. Dealing with the
-Yhome directory is very common. So, in the shell the tilde character,
-`~`, is a shortcut for your home directory. Navigate to the `shell`
-directory, then enter the command:
+There are some shortcuts which you should know about. Referring to the
+home directory is very common. The shell recognises the tilde
+character, `~`, as a shortcut for your home directory. Navigate to the
+`shell` directory, then enter the command:
 
     ls ~
 
 This prints the contents of your home directory, without you having to
-type the full path. The shortcut `..` always refers to the directory
+type the absolute path. The shortcut `..` always refers to the directory
 above your current directory. Thus: 
 
     ls ..
@@ -250,10 +267,11 @@ seem like a useless shortcut right now, but we'll see when it is
 needed in a little while.
 
 To summarize, the commands `ls ~`, `ls ~/.`, `ls ../../`, and `ls
-<absolute path to home directory>` all do exactly the same thing. These shortcuts are not
-necessary, they are provided for your convenience.
+<absolute path to home directory>` all do exactly the same
+thing. These shortcuts are not necessary, they are provided for your
+convenience.
 
-**Our data set: Cochlear Implants**
+# Our data set: Cochlear Implants
 
 A cochlear implant is a small electronic device that is surgically
 implanted in the inner ear to give deaf people a sense of
@@ -288,7 +306,7 @@ commands to get this data into shape. By the end we would like to:
 3.  Get rid of the extraneous "NOTES" files
 
 
-**Wild cards**
+# Wild cards
 
 Navigate to the `~/2014-01-14-manchester/shell/data/THOMAS` directory. This
 directory contains our hearing test data for THOMAS. If we type `ls`,
@@ -326,7 +344,7 @@ are exactly identical. The `ls` command cannot tell the difference
 between these two things.
 
 * * * *
-**Short Exercise**
+# Short Exercise
 
 Do each of the following using a single `ls` command without
 navigating to a different directory.
@@ -336,7 +354,7 @@ navigating to a different directory.
 
 * * * *
 
-**Tab Completion**
+# Tab Completion
 
 Navigate to the home directory. Typing out directory names can waste a
 lot of time. When you start typing out the name of a directory, then
@@ -361,7 +379,7 @@ enter `e<tab><tab>`. You will see the name of every program that
 starts with an `e`. One of those is `echo`. If you enter `ec<tab>` you
 will see that tab completion works.
 
-**Command History**
+# Command History
 
 You can easily access previous commands.  Hit the up arrow.  
 Hit it again.  You can step backwards through your command history. 
@@ -373,7 +391,7 @@ The down arrow takes your forwards in the command history.
 is very useful. If you find a partial match you can keep pressing ^-R until
 you find the instance you are interested in.
 
-## Which program? ##
+# Which program?
 
 Commands like `ls`, `rm`, `echo`, and `cd` are just ordinary programs
 on the computer. A program is just a file that you can *execute*. The
@@ -434,7 +452,7 @@ When there are no `/` characters, the shell assumes you want to look
 in one of the default places for the program.
 
 
-## Examining Files
+# Examining Files
 
 We now know how to switch directories, run programs, and look at the
 contents of directories, but how do we look at the contents of files?
@@ -454,7 +472,7 @@ takes a list of file names and writes them out one after another (this
 is where the name comes from, `cat` is short for concatenate). 
 
 * * * *
-**Short Exercises**
+# Short Exercises
 
 1.  Print out the contents of the `~/2014-01-14-manchester/shell/dictionary.txt`
     file. What does this file contain?
@@ -490,7 +508,7 @@ Remember, the `man` program uses the same commands, so you can search
 documentation using "/" as well!
 
 * * * *
-**Short Exercise**
+# Short Exercise
 
 Use the commands we've learned so far to figure out how to search
 in reverse while using `less`.
@@ -498,7 +516,7 @@ in reverse while using `less`.
 * * * * 
 
 
-## Redirection
+# Redirection
 
 Let's turn to the experimental data from the hearing tests. 
 This data is located in the `~/2014-01-14-manchester/shell/data`
@@ -524,7 +542,7 @@ except that they will append the output to the file if it already
 exists.
 
 * * * *
-**Short Exercise**
+# Short Exercise
 
 Use `>>`, to append the contents of all of the files whose name contains the
 number 4 in the directory:
@@ -538,7 +556,7 @@ experimental data file from gerdal that contains the number 4.
 * * * *
 
 
-## Creating, moving, copying, and removing
+# Creating, moving, copying, and removing
 
 We've created a file called `all_data` using the redirection operator
 `>`. This file is critical - it's our analysis results - so we want to
@@ -572,7 +590,7 @@ The `mkdir` command is used to create a directory. Just enter `mkdir`
 followed by a space, then the directory name. 
 
 * * * *
-**Short Exercise**
+# Short Exercise
 
 Do the following:
 
@@ -589,7 +607,7 @@ delete a directory using the `-r` option. Enter the following command:
     rm -r foo
 
 
-## Count the words
+# Count the words
 
 The `wc` program (word count) counts the number of lines, words, and
 characters in one or more files. Make sure you are in the `data`
@@ -619,7 +637,7 @@ that the fifth column is the size of the file in bytes.
 
 * * * *
 
-## The awesome power of the Pipe
+# The awesome power of the Pipe
 
 Suppose I wanted to only see the total number of character, words, and
 lines across the files `Bert/*` and `gerdal/*4*`. I don't want to
@@ -690,7 +708,7 @@ learn to become proficient with the pipe and redirection operators:
 `|`, `>`, `>>`.
 
 
-**A sorting example**
+## A sorting example
 
 Let's create a file with some words to sort for the next example. We
 want to create a file which contains the following names:
@@ -720,7 +738,7 @@ Notice that the names are now printed in alphabetical order.
 Try looking at this file with `less` - note that the file itself has not changed.
 
 * * * *
-**Short Exercise**
+#Short Exercise
 
 Use the `echo` command and the append operator, `>>`, to append your
 name to the file, then sort it and send the output to a new file called Sorted.
@@ -745,7 +763,7 @@ are two options given to sort:
 Notice that the files are sorted by the number of characters.
 
 * * * *
-**Short Exercise**
+# Short Exercise
 
 Use the `man` command to find out how to sort the output from `wc` in
 reverse order.
@@ -753,7 +771,7 @@ reverse order.
 * * * *
 
 * * * * 
-**Short Exercise**
+# Short Exercise
 
 Combine the `wc`, `sort`, `head` and `tail` commands so that only the
 `wc` information for the largest file is listed
@@ -812,7 +830,7 @@ conducted:
     grep Range *
 
 * * * * 
-**Short Exercise**
+# Short Exercise
 
 Create an executable script called `smallestrange` in the `data`
 directory, that is similar to the `smallest` script, but prints the
@@ -820,7 +838,6 @@ file containing the file with the smallest Range. Use the commands
 `grep`, `sort`, and `tail` to do this.
 
 * * * * 
-
 
 # Finding files
 
@@ -860,7 +877,7 @@ and passes them as arguments to `grep`.  `xargs` generally only creates
 a single instance of `grep` (or whatever program it is running).
 
 * * * *
-**Optional Advanced Investigation**
+# Optional Advanced Investigation
 
 1. Use `man` and other resources to work out why:
 
@@ -872,7 +889,7 @@ is better than the original:
 
 Modify the data directory to demonstrate this in practice.
 
-2. Use resources (e.g. online, man etc) to work out the pro's and con's of:
+2. Use resources (e.g. online, man etc) to work out the pros and cons of:
 
     find . -type f -exec grep Volume {} +
 
@@ -880,10 +897,11 @@ versus:
 
     find . -type f -print | xargs grep Volume  
 
-Use the data directory to demonstrate your understanding, note the `time` command maybe helpful here. 
+Use the data directory to demonstrate your understanding, note the
+`time` command maybe helpful here.
 
 * * * * 
-**Short Exercise** 
+# Short Exercise
 
 Navigate to the `data` directory. Use one `find` command to perform each
 of the operations listed below (except number 2, which does not
@@ -908,7 +926,7 @@ following:
 3.  Enter the command: `git checkout -- data` You should see that the
     data directory has reappeared in its original state
 
-**BONUS**
+## BONUS FUN
 
 Redo exercise 4, except rename only the files which do not already end
 in `.txt`. You will have to use the `man` command to figure out how to
@@ -920,12 +938,18 @@ search for files which do not match a certain name.
 
 In can be convenient to call MatLab from the command line.
 
-For me the location of `matlab` was */Applications/MATLAB_R2013a.app/bin/matlab*. If running `matlab` produces a *command not found* type of message then you can either use the full path for matlab or you can add it to your *PATH* which is the list of locations that the shell searches for commands and programs:
+For me the location of `matlab` was
+*/Applications/MATLAB_R2013a.app/bin/matlab*. If running `matlab`
+produces a *command not found* type of message then you can either use
+the absolute path for matlab or you can add it to your *PATH* which is
+the list of locations that the shell searches for commands and
+programs:
 
     MATLAB_LOCATION=/Applications/MATLAB_R2013a.app/bin
     export PATH=$MATLAB_LOCATION:$PATH
 
-Now using `nano` make a file called `hello.m` and put the following contents in and save the file:
+Now using `nano` make a file called `hello.m` and put the following
+contents in and save the file:
 
     disp(‘hello’)
     exit()
@@ -934,27 +958,44 @@ Then from the same directory call the following command:
 
     matlab -nosplash -nodesktop -r hello –logfile out.txt
    
-This calls matlab without a GUI, the filename is `hello.m` but the argument to -r is just *hello* and the output is written to stdout and a file called `out.txt` - you can use `nano` or `cat` to check the contents.
+This calls matlab without a GUI, the filename is `hello.m` but the
+argument to -r is just *hello* and the output is written to stdout and
+a file called `out.txt` - you can use `nano` or `cat` to check the
+contents.
 
-Another way of calling MatLab is by using a *Here Document*. The Here Document redirects the output of a command block into the *stdin* of a program or command. In our current example, rather than putting the list of commands in a file and then calling `matlab` you can place them in the following way:
+Another way of calling MatLab is by using a *Here Document*. The Here
+Document redirects the output of a command block into the *stdin* of a
+program or command. In our current example, rather than putting the
+list of commands in a file and then calling `matlab` you can place
+them in the following way:
 
     matlab -nosplash -nodesktop <<HEREMARKER
     disp('hello')
     exit()
     HEREMARKER         
 
-One benefit of this approach is that you can keep all of your MatLab and bash commands in one file if this were a script.
+One benefit of this approach is that you can keep all of your MatLab
+and bash commands in one file if this were a script.
 
-For more information about *Here Documents* please refer to [The LDP's Advanced Bash-Scripting Guide](http://www.tldp.org/LDP/abs/html/here-docs.html)
-
-* * * *
-**Short Exercise**
-
-Using the above example write a *Here Document* based script for MatLab, modify it's permissions and run it to test that it works.
+For more information about *Here Documents* please refer to [The LDP's
+Advanced Bash-Scripting
+Guide](http://www.tldp.org/LDP/abs/html/here-docs.html)
 
 * * * *
+# Short Exercise**
 
-Please take a look at the [Shell Cheat Sheet] (https://github.com/apawlik/2014-01-14-manchester/blob/master/shell/shell_cheatsheet.md) to refresh what you have learned and to get a quick overview of some other topics. 
+Using the above example write a *Here Document* based script for
+MatLab, modify it's permissions and run it to test that it works.
 
-If you have reached this part of the document and you have time left or you would like some further practice after the workshop then please attempt the [1000 Genome Shell exercises](https://github.com/apawlik/2014-01-14-manchester/blob/master/shell/exercises/shell.markdown)
+* * * *
+
+Please take a look at the [Shell Cheat Sheet]
+(https://github.com/sebjameswml/2014-01-14-manchester/blob/master/shell/shell_cheatsheet.md)
+to refresh what you have learned and to get a quick overview of some
+other topics.
+
+If you have reached this part of the document and you have time left
+or you would like some further practice after the workshop then please
+attempt the [1000 Genome Shell
+exercises](https://github.com/sebjameswml/2014-01-14-manchester/blob/master/shell/exercises/shell.markdown)
 
