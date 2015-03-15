@@ -25,6 +25,9 @@ as that little prompt at the bottom:
 
     `you@somecomputer:~$`
 
+(If you're geeky, you can change the content and colours in that
+prompt by modifying the PS1 environment variable).
+
 # The Example: Manipulating Experimental Data Files
 
 We will spend most of our time learning about the basics of the shell
@@ -43,26 +46,34 @@ Now we'll *c*hange *d*irectory into the directory tree which git cloned for us:
 # What the shell runs: built-ins and programs
 
 Usually, when you type a command at the shell, all you want the shell
-itself to do is to find, and execute another, standalone program.
+to do is to find, and execute a program.
 
 For example, `ls` is a standalone program which lists the contents of
 the current working directory:
 
     ls
 
+When you type this, the shell first checks if `ls` is one of its own,
+special built-in keywords. It then looks in its list of "places where
+there might be programs" and runs the first one it finds. (That list
+is called the PATH; more on that later).
+
 ## Moving around the file system
 
-Let's learn how to move around the file system using command line
-programs. This is really easy to do using a GUI (just click on
-things). Once you learn the basic commands, you'll see that it is
-really easy to do in the shell too. 
+The filesystem is like a tree. On Unix systems, there's only one root
+of the tree (the ___ ends at the ground). Windows systems may have
+several roots (C:\ D:\ and so on). The bottom of the tree is called
+the root and in Unix, it's represented by the symbol '/'
+
+Navigating the filesystem at the shell requires some typing, but there
+are a number of shortcuts and conveniences to ease the pain.
 
 First we have to know where we are. The program `pwd` (print working
 directory) tells you where you are sitting in the directory tree. The
-command `ls` will list the files in the current
-directory. Directories are often called "folders" because of how they
-are represented in GUIs. Directories are just listings of files. They
-can contain other files or directories.
+command `ls` will list the files in the current directory. Directories
+are often called "folders" because of how they are represented in
+GUIs. Directories are just listings of files. They can contain other
+files or directories.
 
 Whenever you start up a terminal, you will start in a special
 directory called the *home* directory. Every user has their own home
@@ -70,6 +81,9 @@ directory where they have full access to do whatever they want. In
 this case, the `pwd` command tells us that the name of our home directory is.
 The last word in that listing should also be the name of your user. 
 You can also find out your user name by entering the command `whoami`. 
+
+You can always get to your home directory by typing `cd` (return). You
+can navigate to the last directory you were in with `
 
 **File Types**
 
@@ -211,7 +225,7 @@ familiar in there?
 **Shortcuts**
 
 There are some shortcuts which you should know about. Dealing with the
-home directory is very common. So, in the shell the tilde character,
+Yhome directory is very common. So, in the shell the tilde character,
 `~`, is a shortcut for your home directory. Navigate to the `shell`
 directory, then enter the command:
 
