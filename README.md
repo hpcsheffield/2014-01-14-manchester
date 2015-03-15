@@ -1,4 +1,5 @@
-2014-01-14-manchester
-=====================
+Software Carpentry Bootcamp
+===========================
 
-Software Carpentry bootcamp using MATLAB in Manchester, January 2014
+Software Carpentry bootcamp using MATLAB in Sheffield, March 2015.
+
