@@ -271,15 +271,14 @@ To summarize, the commands `ls ~`, `ls ~/.`, `ls ../../`, and `ls
 thing. These shortcuts are not necessary, they are provided for your
 convenience.
 
-# Our data set: Cochlear Implants
+## Our data set: Cochlear Implants
 
 A cochlear implant is a small electronic device that is surgically
 implanted in the inner ear to give deaf people a sense of
 hearing. More than a quarter of a million people have them, but there
-are still no widely-accepted benchmark to measure their effectiveness.
-In order to establish a baseline for such a benchmark, teenagers with 
-CIs were asked to listen to audio files on their computer and
-report:
+is still no widely-accepted benchmark to measure their effectiveness.
+In order to establish a baseline for such a benchmark, teenagers with
+CIs were asked to listen to audio files on their computer and report:
 
 1.  the quietest sound they could hear
 2.  the lowest and highest tones they could hear
@@ -306,7 +305,7 @@ commands to get this data into shape. By the end we would like to:
 3.  Get rid of the extraneous "NOTES" files
 
 
-# Wild cards
+## Wild cards
 
 Navigate to the `~/2014-01-14-manchester/shell/data/THOMAS` directory. This
 directory contains our hearing test data for THOMAS. If we type `ls`,
@@ -331,20 +330,22 @@ lists every file in the current directory which contains the number
 `4`, and ends with the number `1`. There are four such files: `0241`,
 `0341`, `0431`, and `0481`. 
 
-So how does this actually work? Well...when the shell (bash) sees a
-word that contains the `*` character, it automatically looks for files
-that match the given pattern. In this case, it identified four such
+So how does this actually work? When the shell (and this is a
+bash-specific explanation; other shells may ) sees a word that
+contains the `*` character, it automatically looks for files that
+match the given pattern. In this case, it identified four such
 files. Then, it replaced the `*4*1` with the list of files, separated
-by spaces. In other words, the two commands:
+by spaces *and passes that as the argument list to the program*. In
+other words, the two commands:
 
     ls *4*1
     ls 0241 0341 0431 0481
 
-are exactly identical. The `ls` command cannot tell the difference
-between these two things.
+result in an identical call to `ls`. The `ls` command cannot tell the
+difference between these two things.
 
 * * * *
-# Short Exercise
+## Short Exercise
 
 Do each of the following using a single `ls` command without
 navigating to a different directory.
@@ -354,7 +355,7 @@ navigating to a different directory.
 
 * * * *
 
-# Tab Completion
+## Tab Completion [Super useful]
 
 Navigate to the home directory. Typing out directory names can waste a
 lot of time. When you start typing out the name of a directory, then
@@ -381,15 +382,36 @@ will see that tab completion works.
 
 # Command History
 
-You can easily access previous commands.  Hit the up arrow.  
-Hit it again.  You can step backwards through your command history. 
-The down arrow takes your forwards in the command history.  
+You can easily access previous commands. `history` (a bash built-in)
+lists the command history.
+
+    [seb@sebpad 08:48:28 shell]$ history
+     (Extra output snipped)
+     2053  ls
+     2054  which history
+     2055  history
+    [seb@sebpad 08:48:45 shell]$ 
+
+You can re-call a command from that history like this:
+
+    !2053
+
+This will call `ls` from the short list above.
+
+## Navigating and searching the command history [Super useful]
+
+You can quickly access recent commands from the history and search the
+history:
+
+Hit the up arrow.  Hit it again.  You can step backwards through your
+command history.  The down arrow takes you forwards in the command
+history.
 
 ^-C will cancel the command you are writing, and give you a fresh prompt.
 
-^-R will do a reverse-search through your command history.  This
-is very useful. If you find a partial match you can keep pressing ^-R until
-you find the instance you are interested in.
+^-R will do a reverse-search through your command history. This is
+very useful. If you find a partial match you can keep pressing ^-R
+until you find the instance you are interested in.
 
 # Which program?
 
@@ -408,22 +430,30 @@ sits inside of the `/bin` directory. Now enter:
 You will see that `find` is a program that sits inside of the
 `/usr/bin` directory.
 
-So ... when we enter a program name, like `ls`, and hit enter, how
-does the shell know where to look for that program? How does it know
-to run `/bin/ls` when we enter `ls`. The answer is that when we enter
-a program name and hit enter, there are a few standard places that the
-shell automatically looks. If it can't find the program in any of
-those places, it will print an error saying "command not found". Enter
-the command:
+You could have an executable program anywhere on the filesystem. When
+we enter a program name, like `ls`, and hit enter, how does the shell
+know where to look for that program?
+
+How does it know to run `/bin/ls` when we enter `ls` and not
+`/home/me/usr/bin/ls`?
+
+The answer is that when we enter a program name and hit enter, there
+are a few standard places that the shell automatically looks. If it
+can't find the program in any of those places, it will print an error
+saying "command not found". Enter the command:
 
     echo $PATH
 
 This will print out the value of the `PATH` environment variable.
-Notice that a list of directories,
-separated by colon characters, is listed. These are the places the
-shell looks for programs to run. If your program is not in this list,
-then an error is printed. The shell ONLY checks in the places listed
-in the `PATH` environment variable. 
+Notice that a list of directories, separated by colon characters, is
+returned. These are the places the shell looks for programs to run. If
+your program is not in this list, then an error is printed. The shell
+ONLY checks in the places listed in the `PATH` environment variable.
+
+*Note: You can modify the PATH environment variable; adding special
+ directories containing the programs you have written; this is super
+ useful on Iceberg, where you can't install programs into /bin or
+ /usr/bin*
 
 Navigate to the `shell` directory and list the contents. You will
 notice that there is a program (executable file) called `hello` in
@@ -432,8 +462,9 @@ this directory. Now, try to run the program by entering:
     hello
 
 You should get an error saying that hello cannot be found. That is
-because the directory `<your home directory>/2014-01-14-manchester/shell` is not in the
-`PATH`. You can run the `hello` program by entering:
+because the directory `<your home
+directory>/2014-01-14-manchester/shell` is not in the `PATH`. You can
+run the `hello` program by entering:
 
     ./hello
 
@@ -448,9 +479,18 @@ Or by entering:
 
     ../shell/hello
 
+While you're at it; try:
+
+    $HOME/2014-01-14-manchester/shell/hello
+
+and
+
+    /home/$USER/2014-01-14-manchester/shell/hello
+
+Neat huh?
+
 When there are no `/` characters, the shell assumes you want to look
 in one of the default places for the program.
-
 
 # Examining Files
 
@@ -463,7 +503,7 @@ contents using the program `cat`. Enter the following command:
     cat ex_data.txt
 
 This prints out the contents of the `ex_data.txt` file. This file 
-contains an example of how our data looks like. If you enter:
+contains an example of how our data is formatted. If you enter:
 
     cat ex_data.txt ex_data.txt
 
@@ -484,8 +524,8 @@ is where the name comes from, `cat` is short for concatenate).
 * * * *
 
 `cat` is a terrific program, but when the file is really big, it can
-be annoying to use. The program, `less`, is useful for this
-case. Enter the following command:
+be annoying to use. The file viewing program, `less`, is useful for
+this case. Enter the following command:
 
     less ~/2014-01-14-manchester/shell/dictionary.txt
 
@@ -504,8 +544,8 @@ works its way forward. If you are at the end of the file and search
 for the word "cat", `less` will not find it. You need to go to the
 beginning of the file and search.
 
-Remember, the `man` program uses the same commands, so you can search
-documentation using "/" as well!
+Remember, the `man` program uses the same commands (in fact, it uses
+less as its viewer!), so you can search documentation using "/" as well.
 
 * * * *
 # Short Exercise
