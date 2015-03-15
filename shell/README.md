@@ -29,7 +29,7 @@ as that little prompt at the bottom:
 The shell we'll use is called *bash*. It's the most commonly used
 shell though there are many others. You can even use some scripted
 programming languages as if they were shells. In many ways, the shell
-*is* just an interpreted computer programming langauge, but with a
+*is* just an interpreted computer programming language, but with a
 focus on interactive use.
 
 # What the shell does: It calls built-in commands and programs
@@ -644,7 +644,7 @@ All you can see is about the last 25 lines of that file. How to see
 the previous lines?
 
 One was is to scroll up in your terminal or [Super useful tip] press
-CONTROL-PageUP), but this has limitations.
+Shift-PgUp), but this has limitations.
 
 The file viewing program, `less`, is a good tool for viewing long
 files. Enter the following command:
