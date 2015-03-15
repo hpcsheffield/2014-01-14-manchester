@@ -26,12 +26,11 @@ as that little prompt at the bottom:
 
     `you@somecomputer:~$`
 
-(If you're geeky, you can change the content and colours in that
-prompt by modifying the PS1 environment variable).
-
-The shell we'll use is called *bash*, though there are many others,
-and you can even use some scripting programming languages as if they
-were shells.
+The shell we'll use is called *bash*. It's the most commonly used
+shell though there are many others. You can even use some scripted
+programming languages as if they were shells. In many ways, the shell
+*is* just an interpreted computer programming langauge, but with a
+focus on interactive use.
 
 # What the shell does: It calls built-in commands and programs
 
@@ -90,14 +89,13 @@ files or directories.
 
 Whenever you start up a terminal, you will start in a special
 directory called the *home* directory. Every user has their own home
-directory where they have full access to do whatever they want. In
-this case, the `pwd` command tells us what the name of our home
-directory is.  The last word in that listing should also be the name
-of your user.  You can also find out your user name by entering the
-command `whoami`.
+directory where they have full access to create and delete files and
+directories. At the start of a session the `pwd` command tells us what
+the name of our home directory is.  The last word in that listing
+should also be the name of your user.  You can also find out your user
+name by entering the command `whoami`.
 
-You can always get to your home directory by typing `cd` (return). You
-can navigate to the last directory you were in with `cd -`.
+You can always get back to your home directory by typing `cd` (return).
 
 # File Types
 
@@ -168,9 +166,9 @@ This will open the manual page for `ls`. Use the space key to go
 forward and b to go backwards. When you are done reading, just hit `q`
 to exit.
 
-Note if you are using Git Bash on Windows this does not have man but
-people have hosted the man pages at various sites which is useful for
-people on any platform e.g
+Note: if you are using Git Bash on Windows you will not have access to
+`man`. People have hosted the man pages at various sites which is
+useful for people on any platform e.g
 www.kernel.org/doc/man-pages/online_pages.html or
 www.linuxmanpages.com
 
