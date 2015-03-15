@@ -360,12 +360,47 @@ The expansion of wild cards by the shell is known as *globbing*. There
 are some other wild cards beyond the * character which you can search
 up on the internet.
 
-## More on expansion: quotation marks
+## More on expansion: quotation marks and spaces in filenames [Super Useful]
 
-Spaces are important when you type commands in the shell.
+Spaces are important when you type commands in the shell:
 
- cd ../.. # To go back to the 'shell' directory
+    cd ../.. # To go back to the 'shell' directory
 
+This command lists two files:
+
+    ls 4fileone 4filetwo
+
+This command lists one file:
+
+    ls "4fileone 4filetwo"
+
+The shell interprets the quotation marks and passes the string
+"4fileone 4filetwo" to the `ls` program.
+
+This is how you can refer to a file containing a space. Another way is
+to "escape the space":
+
+    ls 4fileone\ 4filetwo
+
+The backslash there tells the shell to interpret the space as part of
+the string and not as the separator between one argument and another.
+
+Dealing with spaces is a bit annoying on the command line, which is
+why most Linux and Unix users tend to avoid spaces in their file
+names.
+
+Lastly,
+
+    ls '4fileone 4filetwo'
+
+Is similar to `ls "4fileone 4filetwo"`, but has an important
+difference. Try this:
+
+    ls "$HOME"
+
+and this:
+
+    ls '$HOME'
 
 * * * *
 ## Short Exercise
@@ -1111,6 +1146,10 @@ This files are executed when the shell starts. You can put any command
 in there. Often used to set an alias for a long command and to set
 environment variables like PATH so they are correct each time you open
 a shell.
+
+## ` characters
+
+E.g. `which ls`
 
 * * * * 
 
