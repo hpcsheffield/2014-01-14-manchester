@@ -36,19 +36,19 @@ use.
 Usually, when you type a command at the shell, all you want the shell
 to do is to find, and execute a program.
 
-For example, `free` is a standalone program which gives you some
-information about the memory available on the computer:
+For example, `ps` is a standalone program which gives you some
+information about the processes running on the computer:
 
-    free
+    ps
 
-When you type this, the shell first checks if `free` is one of its own,
+When you type this, the shell first checks if `ps` is one of its own,
 special built-in keywords. It then looks in its list of "places where
 there might be programs" and runs the first one it finds. (That list
 is called the PATH; more on that later).
 
-You can see the free program that you just ran by listing it:
+You can see the ps program that you just ran by listing it:
 
-    ls /usr/bin/free
+    ls /bin/ps
 
 Some commands you'll use are *bash builtins*. A couple of examples are
 `alias` and `source`. When you type these, you activate code which is
@@ -202,12 +202,12 @@ command line back to you for the execution of additional commands.
 
 To run a job in the background, add an & after the command:
 
-    free &
+    ps &
 
 This is particularly useful for graphical programs which open up their
 own window, or for running a program a few times in parallel.
 
-    free & free & 
+    ps & ps & 
 
 If you put an interactive program like an editor into the background,
 it'll effectively disappear. GNU Nano is a text editor which is both
