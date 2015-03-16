@@ -88,7 +88,7 @@ GUIs. Directories are just listings of files. They can contain other
 files or directories.
 
 When you start up a terminal on most systems, you will start in a special
-directory called the *home* directory. If you're using teh managed desktop,
+directory called the *home* directory. If you're using the managed desktop,
 you'll initially find yourself in a Desktop directory, so change to your home:
 
     cd
