@@ -216,13 +216,13 @@ own window, or for running a program a few times in parallel.
 
 If you put an interactive program like an editor into the background,
 it'll effectively disappear. GNU Nano is a text editor which is both
-common and easy to use. Unfortunately, we don't have it on the Managed Desktop.
-Try it out: open it with
+common and easy to use. Try it out: open it with
 
     nano
 
-and then exit with Ctrl-x. On the Managed Desktop, you can use vi for this
-example. vi is more common than nano, but much more confusing for new users:
+and then exit with Ctrl-x. As we don't have nano on the Managed Desktop,
+you can use vi for this example. vi is more common than nano, but much
+more confusing for new users:
 
     vi
 
@@ -247,6 +247,11 @@ If it's job 1, then you can bring it into the foreground with
 You can stop the job with Ctrl-z and then put it into the
 background with `bg` or into the foreground with `fg`.
 
+You can kill stopped a job with
+
+    kill %1
+
+Assuming it was job number 1.
 
 # Examining the contents of other directories
 
