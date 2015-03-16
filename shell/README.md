@@ -426,6 +426,17 @@ The expansion of wild cards by the shell is known as *globbing*. There
 are some other wild cards beyond the * character which you can search
 up on the internet.
 
+* * * *
+## Short Exercise
+
+Do each of the following using a single `ls` command without
+navigating to a different directory.
+
+1.  List all of the files in `/bin` that contain the letter `a`
+2.  Can you figure out if there are any directories inside of /bin?
+
+* * * *
+
 ## More on expansion: quotation marks and spaces in filenames [Super Useful]
 
 Spaces are important when you type commands in the shell:
@@ -471,11 +482,9 @@ and this:
 * * * *
 ## Short Exercise
 
-Do each of the following using a single `ls` command without
-navigating to a different directory.
-
-1.  List all of the files in `/bin` that contain the letter `a`
-2.  Can you figure out if there are any directories inside of /bin?
+Work through the above examples which used `ls`, replacing `ls` with `cat`.
+This should prove that the quotation marks are important and that the use of
+spaces in filenames is inadvisable.
 
 * * * *
 
@@ -551,7 +560,7 @@ sits inside of the `/bin` directory. Now enter:
     which find
 
 You will see that `find` is a program that sits inside of the
-`/usr/bin` directory.
+`/bin` directory (it might be `/usr/bin` on some platforms).
 
 You could have an executable program anywhere on the filesystem. When
 we enter a program name, like `ls`, and hit enter, how does the shell
@@ -580,14 +589,17 @@ ONLY checks in the places listed in the `PATH` environment variable.
 
 Navigate to the `shell` directory and list the contents. You will
 notice that there is a program (executable file) called `hello` in
-this directory. Now, try to run the program by entering:
+the shell directory. Now, try to run the program by entering:
 
     hello
 
-You should get an error saying that hello cannot be found. That is
+You *should* get an error saying that hello cannot be found. That is
 because the directory `<your home
-directory>/2014-01-14-manchester/shell` is not in the `PATH`. You can
-run the `hello` program by entering:
+directory>/2014-01-14-manchester/shell` is not in the `PATH` (this is
+actually a security feature).  However, it turns
+out that in Windows git bash, the current working directory IS in the path.
+
+In any case, you can run the `hello` program by entering:
 
     ./hello
 
@@ -617,6 +629,8 @@ When there are no `/` characters, the shell assumes you want to look
 in one of the default places for the program.
 
 # Calling MatLab from the shell
+
+* This section can't be run with the Sheffield Windows Managed Desktop *
 
 In can be convenient to call MatLab from the command line.
 
@@ -684,6 +698,9 @@ like:
 
 [status, stdout] = system ('ls ~/somedir/');
 
+This assumes that your matlab is installed on Linux or Mac; the Windows
+matlab system call won't call a bash shell.
+
 # Examining Files
 
 We now know how to switch directories, run programs, and look at the
@@ -723,8 +740,9 @@ be annoying to use. Try this:
 All you can see is about the last 25 lines of that file. How to see
 the previous lines?
 
-One was is to scroll up in your terminal or [Super useful tip] press
-Shift-PgUp), but this has limitations.
+One way is to scroll up in your terminal or [Super useful tip] press
+Shift-PgUp), but this has limitations (one is that neither works on
+the Windows Managed Desktop's installation of git bash!).
 
 The file viewing program, `less`, is a good tool for viewing long
 files. Enter the following command:
