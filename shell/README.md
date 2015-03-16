@@ -87,8 +87,13 @@ are often called "folders" because of how they are represented in
 GUIs. Directories are just listings of files. They can contain other
 files or directories.
 
-Whenever you start up a terminal, you will start in a special
-directory called the *home* directory. Every user has their own home
+When you start up a terminal on most systems, you will start in a special
+directory called the *home* directory. If you're using teh managed desktop,
+you'll initially find yourself in a Desktop directory, so change to your home:
+
+    cd
+
+Every user has their own home
 directory where they have full access to create and delete files and
 directories. At the start of a session the `pwd` command tells us what
 the name of our home directory is.  The last word in that listing
