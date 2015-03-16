@@ -9,4 +9,6 @@ https://github.com/sebjameswml/2014-01-14-manchester/tree/master/shell
 
 The github portion of the tutorial is here:
 
-http://sebjameswml.github.io/git-novice
+http://sebjameswml.github.io/git-novice (web)
+
+https://github.com/sebjameswml/git-novice (the underlying repo)
