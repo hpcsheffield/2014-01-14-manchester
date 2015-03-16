@@ -247,7 +247,7 @@ If it's job 1, then you can bring it into the foreground with
 You can stop the job with Ctrl-z and then put it into the
 background with `bg` or into the foreground with `fg`.
 
-You can kill stopped a job with
+You can kill a stopped job with
 
     kill %1
 
