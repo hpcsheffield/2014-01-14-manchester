@@ -211,14 +211,26 @@ own window, or for running a program a few times in parallel.
 
 If you put an interactive program like an editor into the background,
 it'll effectively disappear. GNU Nano is a text editor which is both
-common and easy to use. Try it out: open it with `nano` and then exit
-with Ctrl-x.
+common and easy to use. Unfortunately, we don't have it on the Managed Desktop.
+Try it out: open it with
+
+    nano
+
+and then exit with Ctrl-x. On the Managed Desktop, you can use vi for this
+example. vi is more common than nano, but much more confusing for new users:
+
+    vi
+
+You have to exit vi with `:q!`.
 
 Now run it in the background:
 
     nano &
+or
 
-Not so useful. You see the shell outputs nano's job number and also its
+    vi &
+
+Not so useful. You see the shell outputs the editor's job number and also its
 process id. You can list the current running jobs with
 
     jobs
@@ -611,10 +623,10 @@ programs:
 *You can put these lines into your .bashrc file to have them run every
  time you log in*
 
-Now using `nano` make a file called `hello.m` and put the following
+Now using `nano` or `notepad` make a file called `hello.m` and put the following
 contents in and save the file:
 
-    disp(‘hello’)
+    disp('hello')
     exit()
 
 Then from the same directory call the following command:
@@ -939,13 +951,14 @@ want to create a file which contains the following names:
     Diane
     Charles
 
-Navigate to `/tmp` and open an empty file with nano:
+Navigate to `/tmp` and open an empty file with nano or notepad:
 
     nano toBeSorted
 
 Now enter the four names as shown above. When you are done, press
 Ctrl-o to write out the file. Press enter to use the file name
-`toBeSorted`. Then press Ctrl-x to exit `nano`.
+`toBeSorted`. Then press Ctrl-x to exit `nano` (or do equivalent
+things in notepad).
 
 When you are back to the command line, enter the command:
 
@@ -1006,7 +1019,7 @@ Printing the smallest file seems pretty useful. We don't want to type
 out that long command often. Let's create a simple script, a simple
 program, to run this command. The program will look at all of the
 files in the current directory and print the information about the
-smallest one. Let's call the script `smallest`. We'll use `nano` to
+smallest one. Let's call the script `smallest`. We'll use `nano` or `notepad` to
 create this file. Navigate to the `data` directory, then:
 
     nano smallest
