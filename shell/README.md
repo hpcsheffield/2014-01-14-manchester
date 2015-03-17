@@ -696,10 +696,15 @@ in matlab, it actually launches a shell, then passes the content of
 the system() call's argument to the shell, meaning you can do things
 like:
 
-[status, stdout] = system ('ls ~/somedir/');
+    [status, stdout] = system ('ls ~/somedir/');
 
-This assumes that your matlab is installed on Linux or Mac; the Windows
-matlab system call won't call a bash shell.
+This assumes that your matlab is installed on Linux or Mac; the
+Windows matlab system call won't call a bash shell; instead it calls
+the standard DOS shell.
+
+You can shortcut to calling a shell command with the ! character in matlab:
+
+    ! ls
 
 # Examining Files
 
@@ -1242,6 +1247,17 @@ try `reset`.
 
 If you have lots of files to rename and you need to do it according to
 some pattern, then `rename` is your tool.
+
+## script
+
+Allows you to log a session.
+
+## screen
+
+Run several shells in a single terminal window in such a way that the
+session is *immune to the network connection being lost*.
+
+
 
 * * * * 
 
